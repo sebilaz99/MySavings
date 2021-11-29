@@ -32,6 +32,7 @@ class Register2 : AppCompatActivity() {
         infoText.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Info")
+            builder.setIcon(R.drawable.human_bot)
             builder.setMessage(getString(R.string.perc_msg))
                 .setPositiveButton("OK") { dialog, id ->
                 }
