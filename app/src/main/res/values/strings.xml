@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MySavings</string>
+
+    <string name="perc_msg">This represent the percentage from your monthly salary that you will be able to save.</string>
 </resources>

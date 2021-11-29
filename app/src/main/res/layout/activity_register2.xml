@@ -66,6 +66,7 @@
         android:id="@+id/linearLayoutInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,42 +78,91 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="20dp"
             android:src="@drawable/ic_baseline_info_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:fontFamily="@font/sarpanch_regular"
-            android:text="Choose your payday"
+            android:text="Both salary and percentage can be modified later in the app."
             android:textSize="15sp"
             android:textStyle="bold" />
 
-
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/chooseDateButton"
-        android:layout_width="320dp"
+
+    <EditText
+        android:id="@+id/percentageEditText"
+        android:layout_width="100dp"
         android:layout_height="45dp"
         android:background="@drawable/rounded_layout_black"
         android:fontFamily="@font/sarpanch_regular"
-        android:text="DD/MM/YYYY"
+        android:hint="%"
+        android:inputType="number"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutInfo"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <TextView
+        android:id="@+id/percentageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sarpanch_regular"
+        android:text="10"
+        android:textColor="#000066"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toEndOf="@+id/percentageEditText"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutInfo"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/percText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sarpanch_regular"
+        android:text="%"
+        android:textColor="#000066"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toEndOf="@+id/percentageTextView"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutInfo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/infoPercentageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sarpanch_regular"
+        android:text="What's this?"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/percentageEditText"
+        app:layout_constraintVertical_bias="0.037" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/finishButton"
         android:layout_width="320dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/button_bg"
         android:fontFamily="@font/sarpanch_medium"
         android:text="Finish"
@@ -121,7 +171,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseDateButton" />
+        app:layout_constraintTop_toBottomOf="@+id/percentageTextView"
+        app:layout_constraintVertical_bias="0.879" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

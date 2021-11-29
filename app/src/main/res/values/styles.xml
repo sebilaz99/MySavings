@@ -3,4 +3,8 @@
     <style name="HeaderBar">
         <item name="android:background">@color/baby_blue_light</item>
     </style>
+
+    <style name="AlertDialog">
+        <item name="android:background">#4D000000</item>
+    </style>
 </resources>
