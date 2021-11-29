@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "48409419425",
+    "project_id": "mysavings-f27d4",
+    "storage_bucket": "mysavings-f27d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48409419425:android:0955dcb23d2f7483fc9ae0",
+        "android_client_info": {
+          "package_name": "com.example.filmaniac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48409419425-f06he8md5so5nim9u9ncvu08ivjieba2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5icjOhraCP_BwG38KGqzdx2NusYiJ4y8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48409419425-f06he8md5so5nim9u9ncvu08ivjieba2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
