@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeItem"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"
+        app:cnb_iconColor="@color/baby_blue" />
+
+    <item
+        android:id="@+id/settingsItem"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Settings"
+        app:cnb_iconColor="@color/baby_blue" />
+
+    <item
+        android:id="@+id/extrasItem"
+        android:icon="@drawable/ic_baseline_star_24"
+        android:title="Extras"
+        app:cnb_iconColor="@color/baby_blue" />
+
+    <item
+        android:id="@+id/listsItem"
+        android:icon="@drawable/ic_baseline_checklist_24"
+        android:title="MyLists"
+        app:cnb_iconColor="@color/baby_blue" />
+
+</menu>

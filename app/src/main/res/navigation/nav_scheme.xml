@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_scheme"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.filmaniac.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_extrasFragment"
+            app:destination="@id/extrasFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myListsFragment"
+            app:destination="@id/myListsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.filmaniac.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_extrasFragment"
+            app:destination="@id/extrasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/extrasFragment"
+        android:name="com.example.filmaniac.ExtrasFragment"
+        android:label="fragment_extras"
+        tools:layout="@layout/fragment_extras" >
+        <action
+            android:id="@+id/action_extrasFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_extrasFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_extrasFragment_to_myListsFragment"
+            app:destination="@id/myListsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myListsFragment"
+        android:name="com.example.filmaniac.MyListsFragment"
+        android:label="fragment_my_lists"
+        tools:layout="@layout/fragment_my_lists" >
+        <action
+            android:id="@+id/action_myListsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_myListsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_myListsFragment_to_extrasFragment"
+            app:destination="@id/extrasFragment" />
+    </fragment>
+</navigation>
