@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sarpanch_semibold"
         android:text="#Tip"
+        android:textColor="@color/baby_blue"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +39,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sarpanch_semibold"
         android:text="1"
+        android:textColor="@color/baby_blue"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,53 +53,16 @@
         android:layout_width="163dp"
         android:layout_height="89dp"
         android:layout_marginEnd="5dp"
-
-        android:text="Don't know where to start from? Establish your monthly dues (eg. Food, Credits, Blahblah)"
-        android:textSize="12sp"
         android:fontFamily="@font/sarpanch_regular"
-
+        android:text="Don't know where to start from? Establish your monthly dues (eg. Food, Credits, Blahblah)"
+        android:textColor="@color/baby_blue"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/closePopupButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_baseline_close_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.7" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/prevPopupButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_baseline_arrow_circle_left_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.696"
-        app:layout_constraintStart_toEndOf="@+id/closePopupButton"
-        app:layout_constraintTop_toBottomOf="@+id/tipText"
-        app:layout_constraintVertical_bias="0.7" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/nextPopupButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_baseline_arrow_circle_right_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
-        app:layout_constraintStart_toEndOf="@+id/prevPopupButton"
-        app:layout_constraintTop_toBottomOf="@+id/tipText"
-        app:layout_constraintVertical_bias="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

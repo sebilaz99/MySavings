@@ -3,4 +3,17 @@
 
     <string name="perc_msg">This represent the percentage from your monthly salary that you will be able to save.</string>
     <!-- TODO: Remove or change this placeholder text -->
+
+    <string-array name="tipsNumbers">
+        <item>Tip #1</item>
+        <item>Tip #2</item>
+        <item>Tip #3</item>
+    </string-array>
+
+    <string-array name="tipsTexts">
+        <item>What should I begin with?</item>
+        <item>Where can I modify the salary and the salary percentage</item>
+        <item>Think about it later</item>
+    </string-array>
+
 </resources>
