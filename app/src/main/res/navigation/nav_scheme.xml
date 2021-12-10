@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/extrasFragment"
-        android:name="com.example.filmaniac.ExtrasFragment"
+        android:name="com.example.filmaniac.extras.ExtrasFragment"
         android:label="fragment_extras"
         tools:layout="@layout/fragment_extras" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/myListsFragment"
-        android:name="com.example.filmaniac.MyListsFragment"
+        android:name="com.example.filmaniac.myLists.MyListsFragment"
         android:label="fragment_my_lists"
         tools:layout="@layout/fragment_my_lists" >
         <action

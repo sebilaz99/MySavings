@@ -1,13 +1,12 @@
-package com.example.filmaniac
+package com.example.filmaniac.extras
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.filmaniac.R
 
 
 class ExtrasFragment : Fragment(R.layout.fragment_extras) {

@@ -2,9 +2,9 @@ package com.example.filmaniac
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-import com.example.filmaniac.databinding.ActivityMainBinding
+import com.example.filmaniac.extras.ExtrasFragment
+import com.example.filmaniac.myLists.MyListsFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class Home : AppCompatActivity() {
