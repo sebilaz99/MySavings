@@ -1,4 +1,4 @@
-package com.example.filmaniac
+package com.example.filmaniac.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.filmaniac.R
 import com.google.firebase.auth.FirebaseAuth
-import kotlin.math.log
 
 class Login : AppCompatActivity() {
 
@@ -25,6 +25,7 @@ class Login : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.passwordEditText)
         val logButton = findViewById<Button>(R.id.loginButton)
         val registerText = findViewById<TextView>(R.id.createAccountTextView)
+        val forgotPasswordText = findViewById<TextView>(R.id.forgotPasswordTextView)
 
         window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.baby_blue)
 
@@ -62,6 +63,11 @@ class Login : AppCompatActivity() {
 
                     }
             }
+        }
+
+        forgotPasswordText.setOnClickListener {
+            val goToReset = Intent(this, ResetPassword::class.java)
+            startActivity(goToReset)
         }
 
     }

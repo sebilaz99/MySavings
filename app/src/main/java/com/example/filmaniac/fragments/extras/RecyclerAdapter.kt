@@ -1,4 +1,4 @@
-package com.example.filmaniac.extras
+package com.example.filmaniac.fragments.extras
 
 import android.app.Dialog
 import android.view.LayoutInflater
