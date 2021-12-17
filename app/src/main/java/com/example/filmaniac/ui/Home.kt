@@ -1,10 +1,13 @@
-package com.example.filmaniac
+package com.example.filmaniac.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import com.example.filmaniac.extras.ExtrasFragment
-import com.example.filmaniac.myLists.MyListsFragment
+import com.example.filmaniac.HomeFragment
+import com.example.filmaniac.R
+import com.example.filmaniac.SettingsFragment
+import com.example.filmaniac.fragments.extras.ExtrasFragment
+import com.example.filmaniac.fragments.myLists.MyListsFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class Home : AppCompatActivity() {

@@ -2,11 +2,11 @@ package com.example.filmaniac
 
 import android.animation.Animator
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieAnimationView
+import com.example.filmaniac.ui.Login
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

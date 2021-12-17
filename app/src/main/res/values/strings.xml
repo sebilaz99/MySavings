@@ -16,4 +16,5 @@
         <item>Think about it later</item>
     </string-array>
 
+    <string name="resetPasswordText">An e-mail will be send on this address in order to reset your password</string>
 </resources>
