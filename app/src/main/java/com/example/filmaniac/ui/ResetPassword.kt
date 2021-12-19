@@ -3,6 +3,7 @@ package com.example.filmaniac.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -28,15 +29,19 @@ class ResetPassword : AppCompatActivity() {
         val email = emailEditTxt.text.toString().trim()
 
         submitBtn.setOnClickListener {
-            auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "Please check your e-mail", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(
-                        this,
-                        "Something went wrong! Please try again.",
-                        Toast.LENGTH_LONG
-                    ).show()
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(this, "Please type your email", Toast.LENGTH_SHORT).show()
+            } else {
+                auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Please check your e-mail", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Something went wrong! Please try again.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
         }

@@ -22,9 +22,8 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
     private lateinit var auth: FirebaseAuth
     private var userId = ""
     private lateinit var itemsList: ArrayList<Item>
-    private lateinit var pricesList: ArrayList<Int>
     private lateinit var recyclerView: RecyclerView
-    private var totalPrice = 0
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,23 +59,42 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
 
         recyclerView.adapter = MyListsAdapter(options) { i: Item, pos: Int ->
             Toast.makeText(view.context, pos.toString(), Toast.LENGTH_SHORT).show()
-            // val p : Place
         }
 
-//        reference.orderByChild("name").equalTo(itemString).addListenerForSingleValueEvent(
-//            object : ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    snapshot.children.forEach {
-//                        val key : String = it.key.toString()
-//
-//                    }
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                }
-//
-//            }
-//        )
+        reference.addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var totalPrice = 0
+                    val keysList = ArrayList<String>()
+                    val valList = ArrayList<String>()
+
+                    snapshot.children.forEach {
+                        val key = it.key
+                        val value = it.value.toString()
+                        keysList.add(key.toString())
+                        valList.add(value)
+
+                    }
+
+                    if (valList.size > 0) {
+                        val stringFromArray = valList.joinToString()
+                        val idk = stringFromArray.replace("{", "").replace("}", "").replace(" ", "")
+                            .replace("price=", "").replace("name=", "")
+
+                        val values = idk.split(",") as ArrayList<String>
+
+                        for (i in 0 until values.size step 2) {
+                            totalPrice += values[i].toInt()
+                        }
+                        totalPriceTxt.text = totalPrice.toString()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            }
+        )
 
 
 
@@ -94,6 +112,7 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
         deleteBtn.setOnClickListener {
             reference.removeValue()
             itemsList.removeAll(itemsList.toSet())
+            totalPriceTxt.text = "0"
         }
 
 
