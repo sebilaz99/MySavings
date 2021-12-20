@@ -11,9 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.filmaniac.R
+import com.example.filmaniac.SettingsFragment
 import com.google.android.material.snackbar.Snackbar
 
 class Register2 : AppCompatActivity() {
+
+    private val settingsFragment = SettingsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +57,16 @@ class Register2 : AppCompatActivity() {
 
             val salaryStr = salary.text.toString().trim()
 
+
             //To Send To the Settings Fragment
             val salaryVal = salary.text.toString().toInt()
             val percentageVal = percentageEdit.text.toString().toInt()
+
+            val bundle = Bundle()
+            bundle.putInt("percentage", percentageVal)
+            bundle.putInt("salary", salaryVal)
+            settingsFragment.arguments = bundle
+
 
             if (salaryStr.isBlank()) {
                 Snackbar.make(

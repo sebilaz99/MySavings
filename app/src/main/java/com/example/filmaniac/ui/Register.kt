@@ -79,7 +79,7 @@ class Register : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 this,
-                                "Error while creating your account",
+                                "Error while creating your account. Invalid email.",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
