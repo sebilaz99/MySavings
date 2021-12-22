@@ -1,13 +1,15 @@
 package com.example.filmaniac
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import java.text.SimpleDateFormat
+import java.time.Year
+import java.util.*
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
@@ -23,14 +25,14 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         val higherBtn = view.findViewById<Button>(R.id.higherButton)
         val lowerBtn = view.findViewById<Button>(R.id.lowerButton)
 
-        val bundle: Bundle? = arguments
+        val bundle = arguments
+
         val percentageReceived = bundle?.getInt("percentage")
-        val salaryReceived = bundle?.getInt("salary")
+        val salaryReceived = bundle?.getString("salary")
 
         percentageTxt.text = percentageReceived.toString()
         salaryEditTxt.setText(salaryReceived.toString())
 
-        percentageTxt.text = percentage.toString()
 
         lowerBtn.setOnClickListener {
             if (percentage > 0) {
@@ -45,6 +47,29 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 percentageTxt.text = percentage.toString()
             }
         }
-    }
 
+        val calendar = Calendar.getInstance()
+
+        val cDay = calendar.get(Calendar.DAY_OF_MONTH)
+        val cMonth = calendar.get(Calendar.MONTH)
+        val cYear = Year.now().value
+
+        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val format = "dd-MM-yyyy"
+            val sdf = SimpleDateFormat(format, Locale.UK)
+            chooseDayBtn.text = sdf.format(calendar.time)
+        }
+
+        chooseDayBtn.setOnClickListener {
+            DatePickerDialog(view.context, datePicker, cYear, cMonth, cDay).show()
+        }
+
+
+    }
 }
+
+

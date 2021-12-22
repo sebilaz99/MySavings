@@ -53,14 +53,11 @@ class Register2 : AppCompatActivity() {
 
         finishBtn.setOnClickListener {
             val perText = percentageEdit.text.toString().trim()
-            percentageText.text = perText
-
             val salaryStr = salary.text.toString().trim()
 
-
             //To Send To the Settings Fragment
-            val salaryVal = salary.text.toString().toInt()
-            val percentageVal = percentageEdit.text.toString().toInt()
+            val salaryVal = salaryStr.toInt()
+            val percentageVal = perText.toInt()
 
             val bundle = Bundle()
             bundle.putInt("percentage", percentageVal)

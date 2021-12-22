@@ -51,7 +51,6 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
 
         reference = userReference.child("Items")
 
-
         val options = FirebaseRecyclerOptions.Builder<Item>()
             .setQuery(reference, Item::class.java)
             .setLifecycleOwner(this)

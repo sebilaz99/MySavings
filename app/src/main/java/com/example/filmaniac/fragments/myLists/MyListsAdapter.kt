@@ -37,8 +37,9 @@ class MyListsAdapter(
         holder.nameTxt.text = item.name
         holder.priceTxt.text = item.price.toString()
 
+
         holder.itemView.setOnLongClickListener {
-            clickListener(item, position)
+            getRef(position).removeValue()
             true
         }
     }
