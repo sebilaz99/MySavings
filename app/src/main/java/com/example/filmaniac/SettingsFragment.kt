@@ -7,11 +7,19 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.time.Year
 import java.util.*
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
+
+    private lateinit var database: FirebaseDatabase
+    private lateinit var reference: DatabaseReference
+    private lateinit var userReference: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+    private var userId = ""
 
     private var percentage = 0
 
@@ -24,29 +32,13 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         val chooseDayBtn = view.findViewById<Button>(R.id.chooseDayButton)
         val higherBtn = view.findViewById<Button>(R.id.higherButton)
         val lowerBtn = view.findViewById<Button>(R.id.lowerButton)
+        val saveSalaryBtn = view.findViewById<Button>(R.id.saveSalaryButton)
 
-        val bundle = arguments
+        //NOT WORKING
+//        val bundle = arguments
+//        val percentageReceived = bundle?.getInt("percentage")
+//        val salaryReceived = bundle?.getString("salary")
 
-        val percentageReceived = bundle?.getInt("percentage")
-        val salaryReceived = bundle?.getString("salary")
-
-        percentageTxt.text = percentageReceived.toString()
-        salaryEditTxt.setText(salaryReceived.toString())
-
-
-        lowerBtn.setOnClickListener {
-            if (percentage > 0) {
-                percentage -= 1
-                percentageTxt.text = percentage.toString()
-            }
-        }
-
-        higherBtn.setOnClickListener {
-            if (percentage < 100) {
-                percentage += 1
-                percentageTxt.text = percentage.toString()
-            }
-        }
 
         val calendar = Calendar.getInstance()
 
@@ -61,13 +53,79 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
             val format = "dd-MM-yyyy"
             val sdf = SimpleDateFormat(format, Locale.UK)
-            chooseDayBtn.text = sdf.format(calendar.time)
+            val dateStr = sdf.format(calendar.time)
+            chooseDayBtn.text = dateStr
+            Toast.makeText(view.context, "Your salary date has been saved!", Toast.LENGTH_SHORT)
+                .show()
+
+            database = FirebaseDatabase.getInstance()
+
+            auth = FirebaseAuth.getInstance()
+            userId = auth.currentUser!!.uid
+            userReference = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
+
+            reference = userReference.child("Info")
+            reference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    reference.child("date").setValue(dateStr)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
+
+        auth = FirebaseAuth.getInstance()
+        userId = auth.currentUser!!.uid
+        userReference = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
+
+        reference = userReference.child("Info")
+
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val percentage = snapshot.child("percentage").value
+                var percentageVal = percentage.toString().toInt()
+                percentageTxt.text = percentage.toString()
+
+                lowerBtn.setOnClickListener {
+                    if (percentageVal > 0) {
+                        percentageVal -= 1
+                        percentageTxt.text = percentageVal.toString()
+                        reference.child("percentage").setValue(percentageVal)
+                    }
+                }
+
+                higherBtn.setOnClickListener {
+                    if (percentageVal < 100) {
+                        percentageVal += 1
+                        percentageTxt.text = percentageVal.toString()
+                        reference.child("percentage").setValue(percentageVal)
+                    }
+                }
+
+                val salary = snapshot.child("salary").value
+                salaryEditTxt.setText(salary.toString())
+
+                saveSalaryBtn.setOnClickListener {
+                    val salaryNew = salaryEditTxt.text.toString().trim()
+                    reference.child("salary").setValue(salaryNew)
+                    Toast.makeText(view.context, "Your salary has been saved!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
 
         chooseDayBtn.setOnClickListener {
             DatePickerDialog(view.context, datePicker, cYear, cMonth, cDay).show()
         }
-
 
     }
 }
