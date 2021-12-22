@@ -116,19 +116,34 @@
 
     <EditText
         android:id="@+id/salaryEditText"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="45dp"
         android:background="@drawable/rectangular"
         android:fontFamily="@font/sarpanch_regular"
         android:hint="Salary"
         android:inputType="number"
-        android:textColor="@color/white"
+        android:textColor="#000066"
         android:textColorHint="@color/baby_blue"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.227" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveSalaryButton"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/sarpanch_semibold"
+        android:text="Save"
+        android:textColor="#000066"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@+id/salaryEditText"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.227" />
 

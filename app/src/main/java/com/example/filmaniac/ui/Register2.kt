@@ -12,11 +12,20 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.filmaniac.R
 import com.example.filmaniac.SettingsFragment
+import com.example.filmaniac.model.Info
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class Register2 : AppCompatActivity() {
 
     private val settingsFragment = SettingsFragment()
+
+    private lateinit var database: FirebaseDatabase
+    private lateinit var reference: DatabaseReference
+    private lateinit var userReference: DatabaseReference
+    private lateinit var auth: FirebaseAuth
+    private var userId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +98,27 @@ class Register2 : AppCompatActivity() {
                 val finish = Intent(this, Home::class.java)
                 startActivity(finish)
             }
+
+            database = FirebaseDatabase.getInstance()
+
+            auth = FirebaseAuth.getInstance()
+            userId = auth.currentUser!!.uid
+            userReference = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
+
+            reference = userReference.child("Info")
+            reference.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val i = Info(percentageVal, salaryVal, null)
+                    reference.setValue(i)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
         }
+
 
     }
 }
