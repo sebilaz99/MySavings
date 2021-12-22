@@ -2,6 +2,7 @@ package com.example.filmaniac.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.filmaniac.HomeFragment
 import com.example.filmaniac.R
@@ -54,8 +55,8 @@ class Home : AppCompatActivity() {
 
                 }
             }
-
         }
+
     }
 
 }

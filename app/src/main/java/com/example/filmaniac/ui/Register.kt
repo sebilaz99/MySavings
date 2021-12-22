@@ -14,6 +14,7 @@ import com.example.filmaniac.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 
 class Register : AppCompatActivity() {
 
@@ -76,6 +77,8 @@ class Register : AppCompatActivity() {
                             val intent = Intent(this, Register2::class.java)
                             intent.putExtra("fullname", fullnameStr)
                             startActivity(intent)
+
+
                         } else {
                             Toast.makeText(
                                 this,

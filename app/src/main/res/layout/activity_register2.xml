@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    android:orientation="vertical"
     tools:context=".ui.Register2">
 
     <androidx.appcompat.widget.AppCompatButton
@@ -176,5 +175,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/percentageTextView"
         app:layout_constraintVertical_bias="0.879" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
