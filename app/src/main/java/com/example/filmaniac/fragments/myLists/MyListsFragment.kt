@@ -36,7 +36,6 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
         val totalPriceTxt = view.findViewById<TextView>(R.id.totalPriceTextView)
 
         database = FirebaseDatabase.getInstance()
-
         auth = FirebaseAuth.getInstance()
         userId = auth.currentUser!!.uid
         userReference = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
@@ -47,7 +46,6 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
         recyclerView.setHasFixedSize(true)
 
         itemsList = arrayListOf()
-
 
         reference = userReference.child("Items")
 
@@ -105,6 +103,9 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
             reference = userReference.child("Items")
             val item = Item(itemString, price)
             reference.push().setValue(item)
+
+            itemName.text.clear()
+            itemPrice.text.clear()
         }
 
 
