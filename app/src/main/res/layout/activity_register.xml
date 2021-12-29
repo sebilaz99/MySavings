@@ -72,22 +72,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.125" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/registerButton"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:background="@drawable/button_bg"
-        android:fontFamily="@font/sarpanch_medium"
-        android:text="Register"
-        android:textColor="#000066"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmEditText"
-        app:layout_constraintVertical_bias="0.241" />
 
     <EditText
         android:id="@+id/confirmEditText"
@@ -136,6 +120,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orTxt"
         app:layout_constraintVertical_bias="0.0" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registerButton"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="192dp"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/sarpanch_medium"
+        android:text="Register"
+        android:textColor="#000066"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
