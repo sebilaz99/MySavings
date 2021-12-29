@@ -17,4 +17,7 @@
     </string-array>
 
     <string name="resetPasswordText">An e-mail will be send on this address in order to reset your password</string>
+
+    <string name="infoText">Think about the stuff you must spend monthly. Add them to the list, then you are ready to add the stuff you wish for.</string>
+
 </resources>

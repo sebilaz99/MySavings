@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.filmaniac.PrioritiesActivity
 import com.example.filmaniac.R
 import com.example.filmaniac.SettingsFragment
 import com.example.filmaniac.model.Info
@@ -95,7 +96,7 @@ class Register2 : AppCompatActivity() {
                     }.setTextColor(resources.getColor(R.color.baby_blue_light))
                     .show()
             } else {
-                val finish = Intent(this, Home::class.java)
+                val finish = Intent(this, PrioritiesActivity::class.java)
                 startActivity(finish)
             }
 
