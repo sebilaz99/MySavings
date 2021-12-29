@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import com.example.filmaniac.R
 import com.google.firebase.auth.FirebaseAuth
@@ -48,6 +45,8 @@ class Login : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(emailStr, passwordStr)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            logButton.text = "Logging in..."
+
                             val intent = Intent(this, Home::class.java)
                             startActivity(intent)
                         } else {
