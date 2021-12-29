@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -28,6 +29,7 @@ class ResetPassword : AppCompatActivity() {
 
         val email = emailEditTxt.text.toString().trim()
 
+        //BUG: NU-MI IA EMAILUL !!!
         submitBtn.setOnClickListener {
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(this, "Please type your email", Toast.LENGTH_SHORT).show()
