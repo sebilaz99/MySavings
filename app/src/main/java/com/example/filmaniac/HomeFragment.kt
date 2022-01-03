@@ -8,16 +8,17 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.FragmentResultListener
 import com.example.filmaniac.ui.Login
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var userReference: DatabaseReference
+    private lateinit var infoReference: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private var userId = ""
 
@@ -27,6 +28,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val fullnameTxt = view.findViewById<TextView>(R.id.fullnameTextView)
         val signOutTxt = view.findViewById<TextView>(R.id.signOutTextView)
+        val priceTxt = view.findViewById<TextView>(R.id.totalPriceTextView)
+        val salaryTxt = view.findViewById<TextView>(R.id.salaryTextView)
+        val resultTxt = view.findViewById<TextView>(R.id.resultTextView)
 
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
@@ -46,6 +50,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             startActivity(signout)
             auth.signOut()
         }
+
+        infoReference = userReference.child("Info")
+
+        infoReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val salary = snapshot.child("salary").value
+                val total = snapshot.child("total").value
+                val salaryVal = salary.toString().toInt()
+                val totalVal = total.toString().toInt()
+                salaryTxt.text = salaryVal.toString()
+                priceTxt.text = totalVal.toString()
+                val result = salaryVal - totalVal
+                resultTxt.text = result.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
 
     }
 }

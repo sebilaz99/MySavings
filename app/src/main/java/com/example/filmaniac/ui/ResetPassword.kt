@@ -27,10 +27,9 @@ class ResetPassword : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val email = emailEditTxt.text.toString().trim()
 
-        //BUG: NU-MI IA EMAILUL !!!
         submitBtn.setOnClickListener {
+            val email = emailEditTxt.text.toString().trim()
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(this, "Please type your email", Toast.LENGTH_SHORT).show()
             } else {

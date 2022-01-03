@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentTransaction
+import com.example.filmaniac.fragments.myLists.MyListsFragment
 import com.example.filmaniac.model.Item
 import com.example.filmaniac.ui.Home
 import com.example.filmaniac.ui.Register
@@ -33,9 +37,11 @@ class PrioritiesActivity : AppCompatActivity() {
         val billsLayout = findViewById<ConstraintLayout>(R.id.billsLayout)
         val phoneLayout = findViewById<ConstraintLayout>(R.id.phoneLayout)
         val internetLayout = findViewById<ConstraintLayout>(R.id.internetLayout)
+        val foodLayout = findViewById<ConstraintLayout>(R.id.foodLayout)
         val doneBtn = findViewById<Button>(R.id.doneButton)
         val backBtn = findViewById<Button>(R.id.backToRegister2Button)
 
+        window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.baby_blue)
 
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.priorities_info_dialog)
@@ -64,6 +70,12 @@ class PrioritiesActivity : AppCompatActivity() {
             itemNameEditTxt.setText(internet)
         }
 
+        foodLayout.setOnClickListener {
+            val food = "Food"
+            itemNameEditTxt.setText(food)
+        }
+
+
         addBtn.setOnClickListener {
             val itemString = itemNameEditTxt.text.toString().trim()
             val priceString = priceEditTxt.text.toString().trim()
@@ -75,11 +87,20 @@ class PrioritiesActivity : AppCompatActivity() {
             itemNameEditTxt.text.clear()
             priceEditTxt.text.clear()
 
+            Toast.makeText(it.context, "$itemString has been added!", Toast.LENGTH_SHORT).show()
+
         }
 
+        //Need to use fragmentManager
         doneBtn.setOnClickListener {
-            val done = Intent(this, Home::class.java)
-            startActivity(done)
+            val i = Intent(this, Home::class.java)
+            startActivity(i)
+
+//            val f = SettingsFragment()
+//            val t: FragmentTransaction = supportFragmentManager.beginTransaction()
+//            t.addToBackStack(null)
+//            t.replace(R.id.prioritiesFrameLayout, f)
+
         }
 
         backBtn.setOnClickListener {
