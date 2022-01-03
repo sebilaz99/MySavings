@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -26,9 +27,9 @@ class ResetPassword : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val email = emailEditTxt.text.toString().trim()
 
         submitBtn.setOnClickListener {
+            val email = emailEditTxt.text.toString().trim()
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(this, "Please type your email", Toast.LENGTH_SHORT).show()
             } else {

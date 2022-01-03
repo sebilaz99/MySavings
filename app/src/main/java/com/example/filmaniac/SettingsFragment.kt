@@ -34,12 +34,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         val lowerBtn = view.findViewById<Button>(R.id.lowerButton)
         val saveSalaryBtn = view.findViewById<Button>(R.id.saveSalaryButton)
 
-        //NOT WORKING
-//        val bundle = arguments
-//        val percentageReceived = bundle?.getInt("percentage")
-//        val salaryReceived = bundle?.getString("salary")
-
-
         val calendar = Calendar.getInstance()
 
         val cDay = calendar.get(Calendar.DAY_OF_MONTH)
@@ -128,6 +122,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
     }
+
 }
 
 

@@ -10,10 +10,12 @@ import com.example.filmaniac.SettingsFragment
 import com.example.filmaniac.fragments.extras.ExtrasFragment
 import com.example.filmaniac.fragments.myLists.MyListsFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import androidx.fragment.app.FragmentManager
+
 
 class Home : AppCompatActivity() {
 
-    lateinit var navigationBar: ChipNavigationBar
+    private lateinit var navigationBar: ChipNavigationBar
 
     private val manager = supportFragmentManager
     private val settingsFragment = SettingsFragment()
@@ -24,6 +26,11 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val fragmentManager: FragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction()
+            .replace(R.id.main_container, homeFragment)
+            .commit()
 
         window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.baby_blue)
 

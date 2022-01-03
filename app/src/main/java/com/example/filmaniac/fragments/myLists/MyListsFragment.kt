@@ -1,6 +1,7 @@
 package com.example.filmaniac.fragments.myLists
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -8,8 +9,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.filmaniac.PrioritiesActivity
 import com.example.filmaniac.R
 import com.example.filmaniac.model.Item
+import com.example.filmaniac.ui.Register
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -18,6 +21,7 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
+    private lateinit var infoReference: DatabaseReference
     private lateinit var userReference: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private var userId = ""
@@ -31,15 +35,19 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
 
         val addBtn = view.findViewById<Button>(R.id.addItemButton)
         val deleteBtn = view.findViewById<ConstraintLayout>(R.id.clearListLayout)
+        val prioritiesBtn = view.findViewById<ConstraintLayout>(R.id.prioritiesLayout)
         val itemName = view.findViewById<EditText>(R.id.itemListEditText)
         val itemPrice = view.findViewById<EditText>(R.id.priceEditText)
         val totalPriceTxt = view.findViewById<TextView>(R.id.totalPriceTextView)
+        val progressBar = view.findViewById<ProgressBar>(R.id.myListsProgressBar)
+
 
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
         userId = auth.currentUser!!.uid
         userReference = FirebaseDatabase.getInstance().reference.child("Users").child(userId)
 
+        progressBar.visibility = View.VISIBLE
 
         recyclerView = view.findViewById(R.id.listRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
@@ -57,6 +65,8 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
         recyclerView.adapter = MyListsAdapter(options) { i: Item, pos: Int ->
             Toast.makeText(view.context, pos.toString(), Toast.LENGTH_SHORT).show()
         }
+
+        progressBar.visibility = View.INVISIBLE
 
         reference.addValueEventListener(
             object : ValueEventListener {
@@ -84,6 +94,11 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
                             totalPrice += values[i].toInt()
                         }
                         totalPriceTxt.text = totalPrice.toString()
+
+                        infoReference = userReference.child("Info")
+
+                        infoReference.child("total").setValue(totalPrice)
+
                     }
                 }
 
@@ -92,7 +107,6 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
 
             }
         )
-
 
 
         addBtn.setOnClickListener {
@@ -115,6 +129,10 @@ class MyListsFragment : Fragment(R.layout.fragment_my_lists) {
             totalPriceTxt.text = "0"
         }
 
+        prioritiesBtn.setOnClickListener {
+            val toPriorities = Intent(it.context, PrioritiesActivity::class.java)
+            startActivity(toPriorities)
+        }
 
     }
 
